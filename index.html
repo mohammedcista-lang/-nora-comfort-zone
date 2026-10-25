@@ -114,20 +114,54 @@
             100% { transform: scale(1.15); filter: drop-shadow(0 0 20px #ec4899); }
         }
 
-        .poem-card {
+        /* البطاقات العامة (الشعر، الكتب، الأغاني) */
+        .section-card {
             background: #ffffff;
             border-radius: 14px;
-            padding: 14px;
+            padding: 15px;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.08);
             width: 100%;
             text-align: center;
-            line-height: 1.9;
-            font-size: 14px;
-            color: #334155;
             margin-bottom: 15px;
             border-right: 4px solid #ec4899;
         }
+        .section-card h3 {
+            color: #3b82f6;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .section-card p {
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.8;
+        }
 
+        /* أزرار التنقل الصغيرة بين الأقسام */
+        .nav-pills {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .pill-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #475569;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        .pill-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        /* حاوية الألعاب */
         .game-container {
             background: #ffffff;
             border-radius: 16px;
@@ -136,6 +170,7 @@
             width: 100%;
             text-align: center;
             border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
         }
 
         .message-box {
@@ -144,14 +179,13 @@
             border-radius: 10px;
             padding: 8px;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             color: #db2777;
             min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px rgba(236, 72, 153, 0.1);
         }
 
         .game-info {
@@ -160,7 +194,7 @@
             margin-bottom: 8px;
             font-weight: bold;
             color: #3b82f6;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         canvas {
@@ -171,35 +205,30 @@
             border: 2px solid #bae6fd;
         }
         
-        /* أزرار التحكم الاحترافية المنضبطة */
         .controls-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 12px;
         }
         .ctrl-btn {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
-            width: 75px;
-            height: 48px;
-            font-size: 20px;
-            border-radius: 12px;
+            width: 70px;
+            height: 45px;
+            font-size: 18px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
         }
-        .ctrl-btn:active {
-            transform: scale(0.92);
-        }
+        .ctrl-btn:active { transform: scale(0.92); }
         .jump-btn {
             background: linear-gradient(135deg, #ec4899, #db2777);
-            width: 110px;
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+            width: 100px;
         }
 
         .btn {
@@ -210,10 +239,23 @@
             font-size: 14px;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 12px;
+            margin-top: 10px;
             font-weight: bold;
             box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
         }
+        
+        .small-btn {
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            padding: 6px 14px;
+            font-size: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
         footer {
             margin-top: 15px;
             font-size: 12px;
@@ -244,25 +286,25 @@
             <p>مساحة صغيرة خصصتها ليكِ عشان تفصلي بيها من تعب اليوم وضغوطات الغربة.</p>
         </header>
 
-        <div class="poem-card">
-            ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
-            تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
-            سلامٌ في عيون الأرانب.. وسكينة تطمئن الروح<br>
-            معاكِ الحزن بيتبدّل.. ومعاكِ الوجع ممحوح
+        <!-- أزرار تبديل الأقسام -->
+        <div class="nav-pills">
+            <button class="pill-btn active" onclick="showSection('gameSec')">🎮 لعبة الأرنب</button>
+            <button class="pill-btn" onclick="showSection('bookSec')">📚 ركن الكتب</button>
+            <button class="pill-btn" onclick="showSection('musicSec')">🎵 نغمة ورواق</button>
+            <button class="pill-btn" onclick="showSection('msgSec')">💌 رسائل مفاجئة</button>
         </div>
 
-        <!-- اللعبة الاحترافية الواحدة: صعود الأرنب على السحب والجزرات -->
-        <div class="game-container">
+        <!-- 1. قسم لعبة الأرنب بالمراحل -->
+        <div id="gameSec" class="game-container">
             <div class="game-info">
-                <span>رحلة أرنوب نحو السحاب ☁️🥕</span>
-                <span>النقاط: <span id="score">0</span></span>
+                <span id="levelTitle">المرحلة 1: واحة السحاب الهادئة ☁️</span>
+                <span>الجزرات: <span id="score">0</span>/10</span>
             </div>
 
-            <div class="message-box" id="msgBox">اضغطي "ابدأ المغامرة" وخلي الابتسامة ترتسم! 😄</div>
+            <div class="message-box" id="msgBox">انطِ فوق السحب واجمعي 10 جزرات لتنتقلي للمرحلة التالية! 🥕</div>
 
-            <canvas id="gameCanvas" width="300" height="200"></canvas>
+            <canvas id="gameCanvas" width="300" height="180"></canvas>
             
-            <!-- أزرار التحكم: يمين، يسار، ونطة لفوق -->
             <div class="controls-row">
                 <button class="ctrl-btn" id="leftBtn">⬅️ يسار</button>
                 <button class="ctrl-btn jump-btn" id="jumpBtn">⬆️ نطة</button>
@@ -270,6 +312,34 @@
             </div>
 
             <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
+        </div>
+
+        <!-- 2. ركن الكتب والاقتباسات -->
+        <div id="bookSec" class="section-card" style="display: none;">
+            <h3>📚 واحة الكلمات والكتب المفضلة</h3>
+            <p id="bookQuote">"الكتب هي أواهي الروح، والكلمات الدافئة تزرع السكينة في وسط زحمة الأيام." <br><br><b>اضغطي الزر أدناه لتتأملي اقتباساً جديداً ✨</b></p>
+            <button class="small-btn" onclick="changeQuote()">اقلب الصفحة 📖</button>
+        </div>
+
+        <!-- 3. ركن النغمات والروقان -->
+        <div id="musicSec" class="section-card" style="display: none;">
+            <h3>🎵 نغمة على السريع للروقان</h3>
+            <p>غمضي عيونك دقيقة، خلي لحن السكينة يطرد تعب اليوم كله.. 🎶</p>
+            <button class="small-btn" id="musicBtn" onclick="toggleMusic()">تشغيل نغمة هادئة 🎧</button>
+            <audio id="cozyAudio" loop src="https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg"></audio>
+        </div>
+
+        <!-- 4. رسائل الدعم المفاجئة -->
+        <div id="msgSec" class="section-card" style="display: none;">
+            <h3>💌 صندوق الرسائل اليومية</h3>
+            <p id="dailyMsg">اضغطي الزر وشوفي رسالة اليوم المخصصة لعيونك! 💕</p>
+            <button class="small-btn" onclick="getRandomMessage()">افتحي رسالة جديدة ✉️</button>
+        </div>
+
+        <div class="poem-card" style="border-right-color: #3b82f6;">
+            ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
+            تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
+            سلامٌ في عيون الأرانب.. وسكينة تطمئن الروح
         </div>
 
         <footer>
@@ -281,7 +351,6 @@
         function checkPassword() {
             const val = document.getElementById("passInput").value.trim();
             const errorMsg = document.getElementById("errorMsg");
-
             if (val === "nora2008,1,26") {
                 document.getElementById("lockScreen").style.display = "none";
                 document.getElementById("mainContent").style.display = "flex";
@@ -290,78 +359,60 @@
             }
         }
 
+        // التنقل بين الأقسام
+        function showSection(secId) {
+            document.getElementById('gameSec').style.display = (secId === 'gameSec') ? 'block' : 'none';
+            document.getElementById('bookSec').style.display = (secId === 'bookSec') ? 'block' : 'none';
+            document.getElementById('musicSec').style.display = (secId === 'musicSec') ? 'block' : 'none';
+            document.getElementById('msgSec').style.display = (secId === 'msgSec') ? 'block' : 'none';
+
+            document.querySelectorAll('.pill-btn').forEach((btn, idx) => {
+                if((secId === 'gameSec' && idx === 0) || (secId === 'bookSec' && idx === 1) || (secId === 'musicSec' && idx === 2) || (secId === 'msgSec' && idx === 3)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // محرك لعبة الأرنب بالمراحل
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
         const scoreEl = document.getElementById("score");
         const msgBox = document.getElementById("msgBox");
         const startBtn = document.getElementById("startBtn");
+        const levelTitle = document.getElementById("levelTitle");
 
         let score = 0;
+        let currentLevel = 1;
         let gameInterval;
         let isPlaying = false;
 
-        // تحميل صورة الأرنب الحقيقية
         const bunnyImg = new Image();
         bunnyImg.src = "bunny.png";
 
-        // خصائص الأرنب الفيزيائية للعبة الصعود
-        let bunny = {
-            x: 130,
-            y: 130,
-            width: 40,
-            height: 40,
-            vx: 0,
-            vy: 0,
-            speed: 4,
-            jumpPower: -8,
-            gravity: 0.35,
-            isGrounded: false
-        };
+        let bunny = { x: 130, y: 120, width: 38, height: 38, vx: 0, vy: 0, speed: 4, jumpPower: -7.5, gravity: 0.35, isGrounded: false };
+        let platforms = [{ x: 90, y: 150, w: 100, h: 10 }, { x: 20, y: 90, w: 80, h: 10 }, { x: 170, y: 50, w: 90, h: 10 }];
+        let carrots = [{ x: 130, y: 125, collected: false }, { x: 55, y: 65, collected: false }, { x: 205, y: 25, collected: false }];
 
-        // المنصات (السحب) والجزرات
-        let platforms = [
-            { x: 100, y: 170, w: 90, h: 12 },
-            { x: 30, y: 110, w: 80, h: 12 },
-            { x: 180, y: 60, w: 80, h: 12 }
-        ];
-
-        let carrots = [
-            { x: 135, y: 145, collected: false },
-            { x: 65, y: 85, collected: false },
-            { x: 215, y: 35, collected: false }
-        ];
-
-        const comments = [
-            "عان الخشيم عامل كيف! 😍",
-            "حلاتها الجضوم دي يا ناس! ❤️",
-            "بحبك يا نورا 💕",
-            "حلاتها البنوته دي 🌸",
-            "رفعة عيونك سمحة خلاص! ✨"
-        ];
+        const comments = ["عان الخشيم عامل كيف! 😍", "حلاتها الجضوم دي يا ناس! ❤️", "بحبك يا نورا 💕", "حلاتها البنوته دي 🌸"];
 
         function resetGame() {
-            bunny.x = 130;
-            bunny.y = 130;
-            bunny.vx = 0;
-            bunny.vy = 0;
-            score = 0;
-            scoreEl.textContent = score;
+            bunny.x = 130; bunny.y = 120; bunny.vx = 0; bunny.vy = 0;
+            score = 0; scoreEl.textContent = score;
             carrots.forEach(c => c.collected = false);
         }
 
         function updateGame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // تحديث حركة الأرنب أفقياً
             bunny.x += bunny.vx;
             if (bunny.x < 0) bunny.x = 0;
             if (bunny.x > canvas.width - bunny.width) bunny.x = canvas.width - bunny.width;
 
-            // تطبيق الجاذبية
             bunny.vy += bunny.gravity;
             bunny.y += bunny.vy;
 
-            // اصطدام الأرنب بالأرضية السفلية للشاشة
             if (bunny.y > canvas.height - bunny.height) {
                 bunny.y = canvas.height - bunny.height;
                 bunny.vy = 0;
@@ -370,94 +421,139 @@
                 bunny.isGrounded = false;
             }
 
-            // فحص الاصطدام مع المنصات (السحب) من أعلى
             platforms.forEach(p => {
-                if (
-                    bunny.vy > 0 &&
-                    bunny.x + bunny.width > p.x &&
-                    bunny.x < p.x + p.w &&
-                    bunny.y + bunny.height >= p.y &&
-                    bunny.y + bunny.height <= p.y + 12
-                ) {
+                // في المرحلة الثانية السحب تتحرك يمين ويسار ببطء
+                if(currentLevel === 2) {
+                    p.x += 0.5;
+                    if(p.x > canvas.width - p.w || p.x < 10) p.w *= -1; // ارتداد بسيط
+                }
+
+                if (bunny.vy > 0 && bunny.x + bunny.width > p.x && bunny.x < p.x + p.w && bunny.y + bunny.height >= p.y && bunny.y + bunny.height <= p.y + 12) {
                     bunny.y = p.y - bunny.height;
                     bunny.vy = 0;
                     bunny.isGrounded = true;
                 }
+                ctx.font = "18px Arial";
+                ctx.fillText(currentLevel === 2 ? "🌙" : "☁️", p.x + (p.w / 2) - 10, p.y + 10);
             });
 
-            // رسم السحب (المنصات)
-            platforms.forEach(p => {
-                ctx.font = "20px Arial";
-                ctx.fillText("☁️", p.x + (p.w / 2) - 15, p.y + 10);
-            });
-
-            // رسم الجزرات
             carrots.forEach(c => {
                 if (!c.collected) {
-                    ctx.font = "22px Arial";
-                    ctx.fillText("🥕", c.x, c.y);
+                    ctx.font = "20px Arial";
+                    ctx.fillText(currentLevel === 3 ? "💖" : "🥕", c.x, c.y);
 
-                    // التقاط الجزر
                     let dist = Math.hypot((bunny.x + 20) - (c.x + 10), (bunny.y + 20) - (c.y - 10));
-                    if (dist < 30) {
+                    if (dist < 28) {
                         c.collected = true;
-                        score += 5;
+                        score++;
                         scoreEl.textContent = score;
                         msgBox.textContent = comments[Math.floor(Math.random() * comments.length)];
-                        
-                        // إعادة تدوير الجزرة لمكان جديد فوق
+
+                        // نظام المراحل الانتقالية
+                        if (score >= 10 && currentLevel === 1) {
+                            currentLevel = 2;
+                            levelTitle.textContent = "المرحلة 2: ليل النجوم الساحر ⭐";
+                            msgBox.textContent = "رائع! دخلنا مرحلة السحب المتحركة.. واصلي!";
+                            resetGame();
+                        } else if (score >= 20 && currentLevel === 2) {
+                            currentLevel = 3;
+                            levelTitle.textContent = "المرحلة 3: قلعة القلوب والأمنيات الكبرى 💖";
+                            msgBox.textContent = "أنتِ بطلة حقيقية! المرحلة الأخيرة للتتويج!";
+                            resetGame();
+                        } else if (score >= 30 && currentLevel === 3) {
+                            clearInterval(gameInterval);
+                            isPlaying = false;
+                            msgBox.textContent = "🎉 مبارك يا نورا! ختمتي كل المراقل بامتياز يا أجمل زولة ❤️";
+                            startBtn.textContent = "العبِ من جديد ✨";
+                            return;
+                        }
+
                         setTimeout(() => {
-                            c.x = Math.random() * (canvas.width - 40);
-                            c.y = Math.random() * 100 + 20;
+                            c.x = Math.random() * (canvas.width - 30);
+                            c.y = Math.random() * 90 + 20;
                             c.collected = false;
-                        }, 1000);
+                        }, 600);
                     }
                 }
             });
 
-            // رسم صورة الأرنب الحقيقية
             ctx.drawImage(bunnyImg, bunny.x, bunny.y, bunny.width, bunny.height);
         }
 
-        // تفاعلات أزرار التحكم بدقة عالية
+        // أزرار التحكم
         const leftBtn = document.getElementById("leftBtn");
         const rightBtn = document.getElementById("rightBtn");
         const jumpBtn = document.getElementById("jumpBtn");
 
-        function moveLeftStart(e) { e.preventDefault(); bunny.vx = -bunny.speed; }
-        function moveRightStart(e) { e.preventDefault(); bunny.vx = bunny.speed; }
-        function moveStop(e) { e.preventDefault(); bunny.vx = 0; }
-        
-        function jumpAction(e) {
+        leftBtn.addEventListener("mousedown", (e)=>{e.preventDefault(); bunny.vx = -bunny.speed;});
+        leftBtn.addEventListener("mouseup", (e)=>{e.preventDefault(); bunny.vx = 0;});
+        leftBtn.addEventListener("touchstart", (e)=>{e.preventDefault(); bunny.vx = -bunny.speed;}, {passive:false});
+        leftBtn.addEventListener("touchend", (e)=>{e.preventDefault(); bunny.vx = 0;}, {passive:false});
+
+        rightBtn.addEventListener("mousedown", (e)=>{e.preventDefault(); bunny.vx = bunny.speed;});
+        rightBtn.addEventListener("mouseup", (e)=>{e.preventDefault(); bunny.vx = 0;});
+        rightBtn.addEventListener("touchstart", (e)=>{e.preventDefault(); bunny.vx = bunny.speed;}, {passive:false});
+        rightBtn.addEventListener("touchend", (e)=>{e.preventDefault(); bunny.vx = 0;}, {passive:false});
+
+        jumpBtn.addEventListener("click", (e)=>{
             e.preventDefault();
-            if (bunny.isGrounded) {
-                bunny.vy = bunny.jumpPower;
-                bunny.isGrounded = false;
-            }
-        }
-
-        leftBtn.addEventListener("mousedown", moveLeftStart);
-        leftBtn.addEventListener("mouseup", moveStop);
-        leftBtn.addEventListener("touchstart", moveLeftStart, { passive: false });
-        leftBtn.addEventListener("touchend", moveStop, { passive: false });
-
-        rightBtn.addEventListener("mousedown", moveRightStart);
-        rightBtn.addEventListener("mouseup", moveStop);
-        rightBtn.addEventListener("touchstart", moveRightStart, { passive: false });
-        rightBtn.addEventListener("touchend", moveStop, { passive: false });
-
-        jumpBtn.addEventListener("click", jumpAction);
-        jumpBtn.addEventListener("touchstart", jumpAction, { passive: false });
+            if (bunny.isGrounded) { bunny.vy = bunny.jumpPower; bunny.isGrounded = false; }
+        });
+        jumpBtn.addEventListener("touchstart", (e)=>{
+            e.preventDefault();
+            if (bunny.isGrounded) { bunny.vy = bunny.jumpPower; bunny.isGrounded = false; }
+        }, {passive:false});
 
         function startGame() {
             if (isPlaying) return;
             isPlaying = true;
+            currentLevel = 1;
+            levelTitle.textContent = "المرحلة 1: واحة السحاب الهادئة ☁️";
             resetGame();
             startBtn.textContent = "جاري اللعب... 🎮";
-            msgBox.textContent = "هبّي لفوق بالزر واجمعي الجزرات يا بطلة! 🥕";
-            
+            msgBox.textContent = "اجمعي 10 جزرات لتنتقلي للمرحلة التانية! 🥕";
             if (gameInterval) clearInterval(gameInterval);
             gameInterval = setInterval(updateGame, 25);
+        }
+
+        // بيانات ركن الكتب والاقتباسات
+        const quotes = [
+            "\"الكتب أصدقاء لا يخانورن، وملاذ هادئ حين تكون الأيام صاخبة.\" 📖",
+            "\"ساعات القراءة المنفردة هي التي تُعيد ترتيب فوضى الروح.\" ✨",
+            "\"في كل كتاب عالم ينتظرك لتشعر بالدفء والسكينة.\" ☕",
+            "\"الجمال يكمن في التفاصيل الصغيرة، في كتاب لطيف وكوب شاي دافئ.\" 🌿"
+        ];
+        function changeQuote() {
+            const rand = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById("bookQuote").innerHTML = rand + "<br><br><b>اضغطي الزر أدناه لتتأملي اقتباساً جديداً ✨</b>";
+        }
+
+        // مشغل الصوت الهادئ
+        let isAudioPlaying = false;
+        function toggleMusic() {
+            const audio = document.getElementById("cozyAudio");
+            const btn = document.getElementById("musicBtn");
+            if(!isAudioPlaying) {
+                audio.play();
+                isAudioPlaying = true;
+                btn.textContent = "إيقاف النغمة ⏸️";
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                btn.textContent = "تشغيل نغمة هادئة 🎧";
+            }
+        }
+
+        // رسائل الدعم المفاجئة
+        const dailyMessages = [
+            "تذكير اليوم: ابتسامتك تضيء العالم يا أجمل نورا! Keep shining ✨",
+            "مهما كانت ضغوطات الغربة واليوم، تذكري إنك قدها وقدود يا بطلة 💪❤️",
+            "خذي نفساً عميقاً، وارتاحي.. أنتِ تقدمين أقصى ما لديك وهذا لوحده فخر 🌸",
+            "يسعد لي عيونك وضحكتك السمحة، دايماً خليكِ متفائلة ومشرقة 😊"
+        ];
+        function getRandomMessage() {
+            const msg = dailyMessages[Math.floor(Math.random() * dailyMessages.length)];
+            document.getElementById("dailyMsg").textContent = msg;
         }
     </script>
 </body>
