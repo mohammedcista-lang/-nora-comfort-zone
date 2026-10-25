@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -115,7 +114,7 @@
             100% { transform: scale(1.15); filter: drop-shadow(0 0 20px #ec4899); }
         }
 
-        /* البطاقات العامة (الشعر، الكتب، الأغاني) */
+        /* البطاقات العامة والأقسام */
         .section-card {
             background: #ffffff;
             border-radius: 14px;
@@ -137,10 +136,10 @@
             line-height: 1.8;
         }
 
-        /* أزرار التنقل الصغيرة بين الأقسام */
+        /* أزرار التنقل بين الأقسام */
         .nav-pills {
             display: flex;
-            gap: 6px;
+            gap: 5px;
             justify-content: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
@@ -148,8 +147,8 @@
         .pill-btn {
             background: #ffffff;
             border: 1px solid #cbd5e1;
-            padding: 6px 12px;
-            font-size: 12px;
+            padding: 6px 10px;
+            font-size: 11px;
             border-radius: 20px;
             cursor: pointer;
             color: #475569;
@@ -246,8 +245,8 @@
         }
         
         .small-btn {
-            background: #e2e8f0;
-            color: #334155;
+            background: #3b82f6;
+            color: white;
             border: none;
             padding: 6px 14px;
             font-size: 12px;
@@ -255,6 +254,31 @@
             cursor: pointer;
             margin-top: 8px;
             font-weight: bold;
+        }
+
+        /* قائمة الأغاني والكتب */
+        .playlist, .book-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .track-item, .book-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        .track-item:hover, .book-item:hover {
+            background: #f1f5f9;
+            border-color: #3b82f6;
         }
 
         footer {
@@ -289,10 +313,10 @@
 
         <!-- أزرار تبديل الأقسام -->
         <div class="nav-pills">
-            <button class="pill-btn active" onclick="showSection('gameSec')">🎮 لعبة الأرنب</button>
-            <button class="pill-btn" onclick="showSection('bookSec')">📚 ركن الكتب</button>
-            <button class="pill-btn" onclick="showSection('musicSec')">🎵 نغمة ورواق</button>
-            <button class="pill-btn" onclick="showSection('msgSec')">💌 رسائل مفاجئة</button>
+            <button class="pill-btn active" onclick="showSection('gameSec')">🎮 اللعبة</button>
+            <button class="pill-btn" onclick="showSection('bookSec')">📚 الكتب والقراءة</button>
+            <button class="pill-btn" onclick="showSection('musicSec')">🎵 مشغل الأغاني</button>
+            <button class="pill-btn" onclick="showSection('msgSec')">💌 رسائل دافئة</button>
         </div>
 
         <!-- 1. قسم لعبة الأرنب بالمراحل -->
@@ -315,19 +339,39 @@
             <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
         </div>
 
-        <!-- 2. ركن الكتب والاقتباسات -->
+        <!-- 2. ركن الكتب والقراءة الحقيقية -->
         <div id="bookSec" class="section-card" style="display: none;">
-            <h3>📚 واحة الكلمات والكتب المفضلة</h3>
-            <p id="bookQuote">"الكتب هي أواهي الروح، والكلمات الدافئة تزرع السكينة في وسط زحمة الأيام." <br><br><b>اضغطي الزر أدناه لتتأملي اقتباساً جديداً ✨</b></p>
-            <button class="small-btn" onclick="changeQuote()">اقلب الصفحة 📖</button>
+            <h3>📚 مكتبة نورا الهادئة (اقرئي وتأملي)</h3>
+            <div id="bookReaderBox">
+                <h4 id="currentBookTitle" style="color: #3b82f6; margin-bottom: 5px;">اختارِ كتاباً من القائمة أدناه</h4>
+                <p id="currentBookContent" style="min-height: 60px;">هنا سيظهر محتوى وفصول الكتاب المختار لتستمتعي بالقراءة في هدوء تام.</p>
+            </div>
+            <div class="book-list">
+                <div class="book-item" onclick="openBook(0)">📖 كتاب: لأنك الله (رحلة للتعرف على الـذات)</div>
+                <div class="book-item" onclick="openBook(1)">📖 كتاب: قواعد العشق الفلافي (خلاصات الحب والسكينة)</div>
+                <div class="book-item" onclick="openBook(2)">📖 كتاب: خربشات يومية وخواطر دافئة 🌿</div>
+            </div>
         </div>
 
-        <!-- 3. ركن النغمات والروقان -->
+        <!-- 3. ركن مشغل الأغاني المخصص -->
         <div id="musicSec" class="section-card" style="display: none;">
-            <h3>🎵 نغمة على السريع للروقان</h3>
-            <p>غمضي عيونك دقيقة، خلي لحن السكينة يطرد تعب اليوم كله.. 🎶</p>
-            <button class="small-btn" id="musicBtn" onclick="toggleMusic()">تشغيل نغمة هادئة 🎧</button>
-            <audio id="cozyAudio" loop src="https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg"></audio>
+            <h3>🎵 مشغل الأغاني والنغمات الخاصة</h3>
+            <p id="nowPlaying" style="font-weight: bold; color: #db2777; margin-bottom: 10px;">جارٍ التشغيل: لم يتم اختيار أغنية بعد 🎧</p>
+            
+            <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 10px;"></audio>
+
+            <div class="playlist">
+                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 'لحن هادئ للروقان والتفكير 🎶')">
+                    <span>🎶 لحن هادئ ومريح للروح</span> <span>▶️ تشغيل</span>
+                </div>
+                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 'مقطوعة بيانو كلاسيكية هادئة 🎹')">
+                    <span>🎹 مقطوعة بيانو كلاسيكية</span> <span>▶️ تشغيل</span>
+                </div>
+                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', 'نغمات استرخاء ومطر خفيف 🌧️')">
+                    <span>🌧️ نغمات استرخاء ومطر خفيف</span> <span>▶️ تشغيل</span>
+                </div>
+            </div>
+            <p style="font-size: 11px; color: #64748b; margin-top: 8px;">* ملاحظة: يمكنك إضافة روابط الأغاني التي تفضلينها (مثل عمرو دياب وغيرها) مباشرة في الكود! ✨</p>
         </div>
 
         <!-- 4. رسائل الدعم المفاجئة -->
@@ -340,11 +384,11 @@
         <div class="poem-card" style="border-right-color: #3b82f6;">
             ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
             تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
-            سلامٌ ل عيون نورا.. وسكينة تطمئن الروح
+            سلامٌ في عيون الأرانب.. وسكينة تطمئن الروح
         </div>
 
         <footer>
-            صُنع بكل حب لعيون نورا ❤️
+            صُنع بكل حب وتقدير لعيون نورا ❤️
         </footer>
     </div>
 
@@ -423,10 +467,9 @@
             }
 
             platforms.forEach(p => {
-                // في المرحلة الثانية السحب تتحرك يمين ويسار ببطء
                 if(currentLevel === 2) {
                     p.x += 0.5;
-                    if(p.x > canvas.width - p.w || p.x < 10) p.w *= -1; // ارتداد بسيط
+                    if(p.x > canvas.width - p.w || p.x < 10) p.w *= -1;
                 }
 
                 if (bunny.vy > 0 && bunny.x + bunny.width > p.x && bunny.x < p.x + p.w && bunny.y + bunny.height >= p.y && bunny.y + bunny.height <= p.y + 12) {
@@ -450,7 +493,6 @@
                         scoreEl.textContent = score;
                         msgBox.textContent = comments[Math.floor(Math.random() * comments.length)];
 
-                        // نظام المراحل الانتقالية
                         if (score >= 10 && currentLevel === 1) {
                             currentLevel = 2;
                             levelTitle.textContent = "المرحلة 2: ليل النجوم الساحر ⭐";
@@ -464,7 +506,7 @@
                         } else if (score >= 30 && currentLevel === 3) {
                             clearInterval(gameInterval);
                             isPlaying = false;
-                            msgBox.textContent = "🎉 مبارك يا نورا! ختمتي كل المراقل بامتياز يا أجمل زولة ❤️";
+                            msgBox.textContent = "🎉 مبارك يا نورا! ختمتي كل المراحل بامتياز يا أجمل زولة ❤️";
                             startBtn.textContent = "العبِ من جديد ✨";
                             return;
                         }
@@ -481,7 +523,7 @@
             ctx.drawImage(bunnyImg, bunny.x, bunny.y, bunny.width, bunny.height);
         }
 
-        // أزرار التحكم
+        // أزرار التحكم للأرنب
         const leftBtn = document.getElementById("leftBtn");
         const rightBtn = document.getElementById("rightBtn");
         const jumpBtn = document.getElementById("jumpBtn");
@@ -517,40 +559,42 @@
             gameInterval = setInterval(updateGame, 25);
         }
 
-        // بيانات ركن الكتب والاقتباسات
-        const quotes = [
-            "\"الكتب أصدقاء لا يخانورن، وملاذ هادئ حين تكون الأيام صاخبة.\" 📖",
-            "\"ساعات القراءة المنفردة هي التي تُعيد ترتيب فوضى الروح.\" ✨",
-            "\"في كل كتاب عالم ينتظرك لتشعر بالدفء والسكينة.\" ☕",
-            "\"الجمال يكمن في التفاصيل الصغيرة، في كتاب لطيف وكوب شاي دافئ.\" 🌿"
+        // محتوى الكتب والقراءة
+        const booksData = [
+            {
+                title: "📖 كتاب: لأنك الله",
+                content: "«لأنك الله.. أستعين بك، وألجأ إليك حين تضيق بي الأسباب.» هذا الكتاب يأخذك في رحلة ممتعة لتعرف أسماء الله الحسنى وكيف نعيش بها في حياتنا اليومية لنشعر بالسكينة والطمأنينة المطلقة بعيداً عن صخب وقلق العالم."
+            },
+            {
+                title: "📖 كتاب: قواعد العشق الفلافي",
+                content: "«قاعدة: الإيمان هو حب الحياة بكل ما فيها، والرضا بالقدر واللحظة الراهنة.» قواعد العشق تعلمنا كيف ننظر للحب كقوة إيجابية تبني الروح وتمنح الأيام بهجة ودفئاً، بعيداً عن تعقيدات البشر."
+            },
+            {
+                title: "📖 كتاب: خربشات يومية وخواطر دافئة",
+                content: "«لا تحزني إن طالت مسافات الغربة، فالبذور تنبت في الصمت لتصبح أشجاراً تظلل من حولها.» خواطر قصيرة مصممة خصيصاً لترسم الابتسامة وتمنح الدعم المعنوي في كل صباح ومساء."
+            }
         ];
-        function changeQuote() {
-            const rand = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById("bookQuote").innerHTML = rand + "<br><br><b>اضغطي الزر أدناه لتتأملي اقتباساً جديداً ✨</b>";
+
+        function openBook(index) {
+            document.getElementById("currentBookTitle").textContent = booksData[index].title;
+            document.getElementById("currentBookContent").textContent = booksData[index].content;
         }
 
-        // مشغل الصوت الهادئ
-        let isAudioPlaying = false;
-        function toggleMusic() {
-            const audio = document.getElementById("cozyAudio");
-            const btn = document.getElementById("musicBtn");
-            if(!isAudioPlaying) {
-                audio.play();
-                isAudioPlaying = true;
-                btn.textContent = "إيقاف النغمة ⏸️";
-            } else {
-                audio.pause();
-                isAudioPlaying = false;
-                btn.textContent = "تشغيل نغمة هادئة 🎧";
-            }
+        // تشغيل الأغاني المخصصة
+        function playTrack(url, name) {
+            const player = document.getElementById("audioPlayer");
+            const nowPlaying = document.getElementById("nowPlaying");
+            player.src = url;
+            player.play();
+            nowPlaying.textContent = "جارٍ التشغيل: " + name;
         }
 
         // رسائل الدعم المفاجئة
         const dailyMessages = [
             "تذكير اليوم: ابتسامتك تضيء العالم يا أجمل نورا! Keep shining ✨",
-            "مهما كانت ضغوطاتك في اليوم اتذكري إنك قدها وقدود يا بطلة 💪❤️",
-            " أنتي عملتي كل التقدير عليهو ودا لوحده فخر 🌸",
-            "يسعد لي عيونك وضحكتك السمحة دي دايماً خليكِ متفائلة ومشرقة 😊"
+            "مهما كانت ضغوطات الغربة واليوم، تذكري إنك قدها وقدود يا بطلة 💪❤️",
+            "خذي نفساً عميقاً، وارتاحي.. أنتِ تقدمين أقصى ما لديك وهذا لوحده فخر 🌸",
+            "يسعد لي عيونك وضحكتك السمحة، دايماً خليكِ متفائلة ومشرقة 😊"
         ];
         function getRandomMessage() {
             const msg = dailyMessages[Math.floor(Math.random() * dailyMessages.length)];
