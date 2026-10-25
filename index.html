@@ -365,7 +365,7 @@
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
 
-        /* قائمة الكتب بصيغة PDF */
+        /* قائمة الكتب بصيغة PDF السريعة */
         .book-list {
             display: flex;
             flex-direction: column;
@@ -468,23 +468,26 @@
             <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
         </div>
 
-        <!-- 2. ركن الكتب والقراءة (PDF حقيقية) -->
+        <!-- 2. ركن الكتب والقراءة (محدث بالأسماء الإنجليزية وبتخفيف التحميل السريع) -->
         <div id="bookSec" class="section-card" style="display: none;">
             <h3>📚 مكتبة نورا الهادئة (اقرئي وتأملي)</h3>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">اضغطي على أي كتاب لفتح وقراءة النسخة الكاملة مباشرة 📖✨</p>
+            <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">اضغطي على الكتاب لفتحه أو تحميله فوراً بدون انتظار 📖✨</p>
             
             <div class="book-list">
-                <a href="لأنك الله.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: لأنك الله</span> <span>📥 تصفح وقراءة</span>
+                <a href="lanak.pdf" target="_blank" download class="book-item">
+                    <span>📖 كتاب: لأنك الله</span> <span style="color:#2563eb;">📥 تصفح / تحميل</span>
                 </a>
-                <a href="أحبك وكفى.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: أحبك وكفى</span> <span>📥 تصفح وقراءة</span>
+                <a href="ahobak.pdf" target="_blank" download class="book-item">
+                    <span>📖 كتاب: أحبك وكفى</span> <span style="color:#2563eb;">📥 تصفح / تحميل</span>
                 </a>
-                <a href="عزازيل.pdf" target="_blank" class="book-item">
-                    <span>📖 رواية: عزازيل</span> <span>📥 تصفح وقراءة</span>
+                <a href="azazil.pdf" target="_blank" download class="book-item">
+                    <span>📖 رواية: عزازيل</span> <span style="color:#2563eb;">📥 تصفح / تحميل</span>
                 </a>
-                <a href="رسائل من القران.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: رسائل من القرآن</span> <span>📥 تصفح وقراءة</span>
+                <a href="quran.pdf" target="_blank" download class="book-item">
+                    <span>📖 كتاب: رسائل من القرآن</span> <span style="color:#2563eb;">📥 تصفح / تحميل</span>
+                </a>
+                <a href="TheQuran.pdf" target="_blank" download class="book-item">
+                    <span>📖 المصحف الشريف: The Quran</span> <span style="color:#2563eb;">📥 تصفح / تحميل</span>
                 </a>
             </div>
         </div>
