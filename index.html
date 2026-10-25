@@ -423,8 +423,8 @@
     <div id="lockScreen">
         <div class="lock-card">
             <div class="glow-heart">♥️</div>
-            <h2>مساحة خاصة جداً ل بتي الصغنونة 🐰🔒</h2>
-            <p>هذه المساحة محمية بكلمة سر خاصة.. اكتبي اسمك وتاريخ ميلادك عشان تفتحي باب الهدوء؟</p>
+            <h2>مساحة خاصة جداً 🐰🔒</h2>
+            <p>هذه المساحة محمية بكلمة سر خاصة.. هل تعرفين المفتاح السري لتفتحي باب الهدوء؟</p>
             <input type="text" id="passInput" class="lock-input" placeholder="اكتبي كلمة السر هنا..">
             <button class="btn" onclick="checkPassword()">دخول المساحة</button>
             <div class="error-msg" id="errorMsg"></div>
@@ -542,11 +542,11 @@
         <div class="poem-card">
             ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
             تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
-            سلامٌ في عيون نورا .. وسكينة تطمئن الروح
+            سلامٌ في عيون الأرانب.. وسكينة تطمئن الروح
         </div>
 
         <footer>
-            صُنع بكل حب لعيون نورا ♥️
+            صُنع بكل حب وتقدير لعيون نورا ♥️
         </footer>
     </div>
 
@@ -579,7 +579,7 @@
 
         // --- نظام مشغل الموسيقى المتطور ---
         const playlistData = [
-            { src: 'Tamerd.mp3', title: 'ضحكتها', artist: 'تامر حسني ♥️' },
+            { src: 'Tamerd.mp3', title: 'قادر أكمل', artist: 'تامر حسني ♥️' },
             { src: 'Lmatkony.mp3', title: 'لما تكوني', artist: 'أغنية رومانسية ✨' },
             { src: 'Sherine.mp3', title: 'مشاعر', artist: 'شيرين عبد الوهاب 🌸' },
             { src: 'Ahmedsaad.mp3', title: 'أغنية حب مميزة', artist: 'أحمد سعد 🌟' }
@@ -787,4 +787,22 @@
             levelTitle.textContent = "المرحلة 1: واحة السحاب الهادئة ☁️";
             resetGame();
             startBtn.textContent = "جاري اللعب... 🎮";
-            msgBox.
+            msgBox.textContent = "اجمعي 10 جزرات لتنتقلي للمرحلة التانية! 🥕";
+            if (gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(updateGame, 25);
+        }
+
+        // رسائل الدعم المفاجئة
+        const dailyMessages = [
+            "تذكير اليوم: ابتسامتك تضيء العالم يا أجمل نورا! Keep shining ✨",
+            "مهما كانت ضغوطات الغربة واليوم، تذكري إنك قدها وقدود يا بطلة 💪♥️",
+            "خذي نفساً عميقاً، وارتاحي.. أنتِ تقدمين أقصى ما لديك وهذا لوحده فخر 🌸",
+            "يسعد لي عيونك وضحكتك السمحة، دايماً خليكِ متفائلة ومشرقة 😊"
+        ];
+        function getRandomMessage() {
+            const msg = dailyMessages[Math.floor(Math.random() * dailyMessages.length)];
+            document.getElementById("dailyMsg").textContent = msg;
+        }
+    </script>
+</body>
+</html>
