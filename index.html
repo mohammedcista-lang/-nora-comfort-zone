@@ -365,7 +365,7 @@
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
 
-        /* قائمة الكتب (تفتح فوراً في المتصفح) */
+        /* قائمة الكتب للتصفح المباشر */
         .book-list {
             display: flex;
             flex-direction: column;
@@ -424,7 +424,7 @@
         <div class="lock-card">
             <div class="glow-heart">♥️</div>
             <h2>مساحة خاصة جداً ل بتي الصغنونة 🐰🔒</h2>
-            <p>هذه المساحة محمية بكلمة سر خاصة.. اكتبي اسمك وتاريخ ميلادك عشان تفتحي مساحتم الخاصة؟</p>
+            <p>هذه المساحة محمية بكلمة سر خاصة.. اكتبي اسمك وتاريخ ميلادك عشان تفتحي باب الهدوء؟</p>
             <input type="text" id="passInput" class="lock-input" placeholder="اكتبي كلمة السر هنا..">
             <button class="btn" onclick="checkPassword()">دخول المساحة</button>
             <div class="error-msg" id="errorMsg"></div>
@@ -468,29 +468,29 @@
             <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
         </div>
 
-        <!-- 2. ركن الكتب والقراءة (عبر مشغل المتصفح المباشر والسريع) -->
+        <!-- 2. ركن الكتب والقراءة (فتح مباشر وفوري بدون أخطاء) -->
         <div id="bookSec" class="section-card" style="display: none;">
             <h3>📚 مكتبة نورا الهادئة (اقرئي وتأملي)</h3>
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">اضغطي على أي كتاب لفتحه وقراءته فوراً في المتصفح 📖✨</p>
+            <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">اضغطي على أي كتاب لفتحه وتصفحه فوراً في المتصفح 📖✨</p>
             
             <div class="book-list">
-                <a href="lanak.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: لأنك الله</span> <span style="color:#2563eb;">📖 قراءة فورية</span>
+                <a href="./lanak.pdf#view=FitH" target="_blank" class="book-item">
+                    <span>📖 كتاب: لأنك الله</span> <span style="color:#2563eb;">📖 تصفح الآن</span>
                 </a>
-                <a href="ahobak.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: أحبك وكفى</span> <span style="color:#2563eb;">📖 قراءة فورية</span>
+                <a href="./ahobak.pdf#view=FitH" target="_blank" class="book-item">
+                    <span>📖 كتاب: أحبك وكفى</span> <span style="color:#2563eb;">📖 تصفح الآن</span>
                 </a>
-                <a href="azazil.pdf" target="_blank" class="book-item">
-                    <span>📖 رواية: عزازيل</span> <span style="color:#2563eb;">📖 قراءة فورية</span>
+                <a href="./azazil.pdf#view=FitH" target="_blank" class="book-item">
+                    <span>📖 رواية: عزازيل</span> <span style="color:#2563eb;">📖 تصفح الآن</span>
                 </a>
-                <a href="quran.pdf" target="_blank" class="book-item">
-                    <span>📖 كتاب: رسائل من القرآن</span> <span style="color:#2563eb;">📖 قراءة فورية</span>
+                <a href="./quran.pdf#view=FitH" target="_blank" class="book-item">
+                    <span>📖 كتاب: رسائل من القرآن</span> <span style="color:#2563eb;">📖 تصفح الآن</span>
                 </a>
-                <a href="TheQuran.pdf" target="_blank" class="book-item">
-                    <span>📖 المصحف الشريف: The Quran</span> <span style="color:#2563eb;">📖 قراءة فورية</span>
+                <a href="./TheQuran.pdf#view=FitH" target="_blank" class="book-item">
+                    <span>📖 المصحف الشريف: The Quran</span> <span style="color:#2563eb;">📖 تصفح الآن</span>
                 </a>
             </div>
-            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">* ملاحظة: الروابط المباشرة تفتح الملف في عارض المتصفح بسرعة الصاروخ وبدون أي رسائل خطأ! ✨</p>
+            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">* ملاحظة: تم ضبط الروابط ببادئة `./` وعلامة العرض السريع لتفتح في عارض المتصفح الداخلي فوراً! ✨</p>
         </div>
 
         <!-- 3. مشغل الموسيقى المتطور والحديث -->
@@ -579,7 +579,7 @@
 
         // --- نظام مشغل الموسيقى المتطور ---
         const playlistData = [
-            { src: 'Tamerd.mp3', title: 'قادر أكمل', artist: 'تامر حسني ♥️' },
+            { src: 'Tamerd.mp3', title: 'ضحكتها', artist: 'تامر حسني ♥️' },
             { src: 'Lmatkony.mp3', title: 'لما تكوني', artist: 'أغنية رومانسية ✨' },
             { src: 'Sherine.mp3', title: 'مشاعر', artist: 'شيرين عبد الوهاب 🌸' },
             { src: 'Ahmedsaad.mp3', title: 'أغنية حب مميزة', artist: 'أحمد سعد 🌟' }
@@ -771,7 +771,6 @@
         rightBtn.addEventListener("touchstart", (e)=>{e.preventDefault(); bunny.vx = bunny.speed;}, {passive:false});
         rightBtn.addEventListener("touchend", (e)=>{e.preventDefault(); bunny.vx = 0;}, {passive:false});
 
-        jumpBtn.click = function(e){};
         jumpBtn.addEventListener("click", (e)=>{
             e.preventDefault();
             if (bunny.isGrounded) { bunny.vy = bunny.jumpPower; bunny.isGrounded = false; }
@@ -788,22 +787,4 @@
             levelTitle.textContent = "المرحلة 1: واحة السحاب الهادئة ☁️";
             resetGame();
             startBtn.textContent = "جاري اللعب... 🎮";
-            msgBox.textContent = "اجمعي 10 جزرات لتنتقلي للمرحلة التانية! 🥕";
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(updateGame, 25);
-        }
-
-        // رسائل الدعم المفاجئة
-        const dailyMessages = [
-            "تذكير اليوم: ابتسامتك تضيء العالم يا أجمل نورا! Keep shining ✨",
-            "مهما كانت ضغوطات الغربة واليوم، تذكري إنك قدها وقدود يا بطلة 💪♥️",
-            "خذي نفساً عميقاً، وارتاحي.. أنتِ تقدمين أقصى ما لديك وهذا لوحده فخر 🌸",
-            "يسعد لي عيونك وضحكتك السمحة، دايماً خليكِ متفائلة ومشرقة 😊"
-        ];
-        function getRandomMessage() {
-            const msg = dailyMessages[Math.floor(Math.random() * dailyMessages.length)];
-            document.getElementById("dailyMsg").textContent = msg;
-        }
-    </script>
-</body>
-</html>
+            msgBox.
