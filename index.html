@@ -20,7 +20,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             overflow-x: hidden;
         }
 
@@ -69,7 +69,6 @@
             text-align: center;
             margin-bottom: 15px;
             outline: none;
-            transition: border-color 0.2s;
         }
         .lock-input:focus {
             border-color: #3b82f6;
@@ -85,29 +84,29 @@
         #mainContent {
             display: none;
             width: 100%;
+            max-width: 500px;
             flex-direction: column;
             align-items: center;
         }
 
         header {
             text-align: center;
-            margin-bottom: 15px;
-            max-width: 600px;
+            margin-bottom: 12px;
         }
         header h1 {
             color: #3b82f6;
-            font-size: 22px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
         header p {
             color: #64748b;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .glow-heart {
-            font-size: 32px;
+            font-size: 28px;
             animation: pulseGlow 1.5s infinite alternate;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             filter: drop-shadow(0 0 10px #ec4899);
         }
         @keyframes pulseGlow {
@@ -117,70 +116,42 @@
 
         .poem-card {
             background: #ffffff;
-            border-radius: 15px;
-            padding: 18px;
+            border-radius: 14px;
+            padding: 14px;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.08);
-            max-width: 600px;
             width: 100%;
             text-align: center;
-            line-height: 2.1;
-            font-size: 15px;
+            line-height: 1.9;
+            font-size: 14px;
             color: #334155;
-            margin-bottom: 20px;
-            border-right: 5px solid #ec4899;
+            margin-bottom: 15px;
+            border-right: 4px solid #ec4899;
         }
 
         .game-container {
             background: #ffffff;
-            border-radius: 18px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 15px;
             box-shadow: 0 10px 30px rgba(59, 130, 246, 0.12);
-            max-width: 600px;
             width: 100%;
             text-align: center;
-            position: relative;
             border: 1px solid #e2e8f0;
-        }
-
-        /* أزرار اختيار اللعبة */
-        .game-selector {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        .select-game-btn {
-            background: #e2e8f0;
-            border: none;
-            padding: 8px 12px;
-            font-size: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #475569;
-            transition: all 0.2s;
-        }
-        .select-game-btn.active {
-            background: #3b82f6;
-            color: white;
-            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
         }
 
         .message-box {
             background: #fdf2f8;
             border: 2px solid #fbcfe8;
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            padding: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
             font-weight: bold;
             color: #db2777;
-            min-height: 45px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.15);
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.1);
         }
 
         .game-info {
@@ -193,52 +164,58 @@
         }
 
         canvas {
-            background: linear-gradient(to bottom, #f8fafc, #edf2f7);
-            border-radius: 12px;
+            background: linear-gradient(to bottom, #e0f2fe, #f0f9ff);
+            border-radius: 10px;
             display: block;
             margin: 0 auto;
-            border: 2px solid #93c5fd;
-            box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.08);
+            border: 2px solid #bae6fd;
         }
         
+        /* أزرار التحكم الاحترافية المنضبطة */
         .controls-row {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 15px;
+            gap: 20px;
+            margin-top: 12px;
         }
         .ctrl-btn {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
-            width: 80px;
-            height: 52px;
-            font-size: 24px;
-            border-radius: 14px;
+            width: 75px;
+            height: 48px;
+            font-size: 20px;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
         .ctrl-btn:active {
-            transform: scale(0.90);
+            transform: scale(0.92);
+        }
+        .jump-btn {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            width: 110px;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
         }
 
         .btn {
             background: linear-gradient(135deg, #ec4899, #db2777);
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 15px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 12px;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
         }
         footer {
-            margin-top: 25px;
+            margin-top: 15px;
             font-size: 12px;
             color: #64748b;
             text-align: center;
@@ -247,7 +224,7 @@
 </head>
 <body>
 
-    <!-- شاشة إدخال كلمة السر الخاصة -->
+    <!-- شاشة قفل كلمة السر -->
     <div id="lockScreen">
         <div class="lock-card">
             <div class="glow-heart">💖</div>
@@ -274,29 +251,25 @@
             معاكِ الحزن بيتبدّل.. ومعاكِ الوجع ممحوح
         </div>
 
-        <!-- الألعاب -->
+        <!-- اللعبة الاحترافية الواحدة: صعود الأرنب على السحب والجزرات -->
         <div class="game-container">
-            <div class="game-selector">
-                <button class="select-game-btn active" onclick="switchGameMode(1)" id="modeBtn1">🌟 جامع الأمنيات</button>
-                <button class="select-game-btn" onclick="switchGameMode(2)" id="modeBtn2">🚀 القفز للقمة</button>
-                <button class="select-game-btn" onclick="switchGameMode(3)" id="modeBtn3">💬 لغز الكلمات</button>
-            </div>
-
             <div class="game-info">
-                <span id="gameTitle">لعبة جامع الأمنيات والنجوم 🌟</span>
+                <span>رحلة أرنوب نحو السحاب ☁️🥕</span>
                 <span>النقاط: <span id="score">0</span></span>
             </div>
 
-            <div class="message-box" id="msgBox">اضغطي "ابدأ اللعبة" وخلي الابتسامة ترتسم! 😄</div>
+            <div class="message-box" id="msgBox">اضغطي "ابدأ المغامرة" وخلي الابتسامة ترتسم! 😄</div>
 
-            <canvas id="gameCanvas" width="330" height="190"></canvas>
+            <canvas id="gameCanvas" width="300" height="200"></canvas>
             
+            <!-- أزرار التحكم: يمين، يسار، ونطة لفوق -->
             <div class="controls-row">
-                <button class="ctrl-btn" id="leftBtn">⬅️</button>
-                <button class="ctrl-btn" id="rightBtn">➡️</button>
+                <button class="ctrl-btn" id="leftBtn">⬅️ يسار</button>
+                <button class="ctrl-btn jump-btn" id="jumpBtn">⬆️ نطة</button>
+                <button class="ctrl-btn" id="rightBtn">يمين ➡️</button>
             </div>
 
-            <button class="btn" id="startBtn" onclick="startGame()">ابدأ اللعبة ✨</button>
+            <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
         </div>
 
         <footer>
@@ -326,158 +299,162 @@
         let score = 0;
         let gameInterval;
         let isPlaying = false;
-        let currentMode = 1;
 
-        // تحميل صورة الأرنب الحقيقية bunny.png
+        // تحميل صورة الأرنب الحقيقية
         const bunnyImg = new Image();
         bunnyImg.src = "bunny.png";
 
-        let bunny = { x: 140, y: 125, width: 45, height: 45, speed: 25 };
-        let items = [];
+        // خصائص الأرنب الفيزيائية للعبة الصعود
+        let bunny = {
+            x: 130,
+            y: 130,
+            width: 40,
+            height: 40,
+            vx: 0,
+            vy: 0,
+            speed: 4,
+            jumpPower: -8,
+            gravity: 0.35,
+            isGrounded: false
+        };
+
+        // المنصات (السحب) والجزرات
+        let platforms = [
+            { x: 100, y: 170, w: 90, h: 12 },
+            { x: 30, y: 110, w: 80, h: 12 },
+            { x: 180, y: 60, w: 80, h: 12 }
+        ];
+
+        let carrots = [
+            { x: 135, y: 145, collected: false },
+            { x: 65, y: 85, collected: false },
+            { x: 215, y: 35, collected: false }
+        ];
 
         const comments = [
             "عان الخشيم عامل كيف! 😍",
             "حلاتها الجضوم دي يا ناس! ❤️",
             "بحبك يا نورا 💕",
-            "حلاتها البنوته دي 🌸"
+            "حلاتها البنوته دي 🌸",
+            "رفعة عيونك سمحة خلاص! ✨"
         ];
 
-        function switchGameMode(mode) {
-            if (isPlaying) clearInterval(gameInterval);
-            isPlaying = false;
-            currentMode = mode;
+        function resetGame() {
+            bunny.x = 130;
+            bunny.y = 130;
+            bunny.vx = 0;
+            bunny.vy = 0;
             score = 0;
             scoreEl.textContent = score;
-            startBtn.textContent = "ابدأ اللعبة ✨";
-
-            document.querySelectorAll('.select-game-btn').forEach((btn, idx) => {
-                if (idx + 1 === mode) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-
-            if (mode === 1) {
-                document.getElementById("gameTitle").textContent = "لعبة جامع الأمنيات والنجوم 🌟";
-                msgBox.textContent = "اجمعي النجوم والقلوب وتجنبي السحب الغاضبة!";
-            } else if (mode === 2) {
-                document.getElementById("gameTitle").textContent = "رحلة الأرنب نحو القمة 🚀";
-                msgBox.textContent = "انطِ لفوق واجمعي الجزرات على السحب!";
-            } else if (mode === 3) {
-                document.getElementById("gameTitle").textContent = "لغز الكلمات والرسائل 💬";
-                msgBox.textContent = "اجمعي حروف كلمة (نورا) بترتيبها الصحيح!";
-            }
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
-
-        function initGameData() {
-            items = [];
-            if (currentMode === 1) {
-                items.push({ x: Math.random() * 280, y: 0, type: 'star', symbol: '⭐', speed: 2.5 });
-                items.push({ x: Math.random() * 280, y: -50, type: 'heart', symbol: '💖', speed: 2 });
-            } else if (currentMode === 2) {
-                bunny.y = 125;
-                for (let i = 0; i < 4; i++) {
-                    items.push({ x: Math.random() * 260, y: i * 50, symbol: '☁️', w: 50, h: 20 });
-                }
-            } else if (currentMode === 3) {
-                const letters = ['ن', 'و', 'ر', 'ا', '✨'];
-                letters.forEach((l, i) => {
-                    items.push({ x: 50 + (i * 55), y: 40 + (Math.sin(i) * 30), symbol: l, collected: false });
-                });
-            }
+            carrots.forEach(c => c.collected = false);
         }
 
         function updateGame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // رسم صورة الأرنب الحقيقية بدل الإيموجي
-            ctx.drawImage(bunnyImg, bunny.x, bunny.y, bunny.width, bunny.height);
+            // تحديث حركة الأرنب أفقياً
+            bunny.x += bunny.vx;
+            if (bunny.x < 0) bunny.x = 0;
+            if (bunny.x > canvas.width - bunny.width) bunny.x = canvas.width - bunny.width;
 
-            if (currentMode === 1) {
-                items.forEach(item => {
-                    item.y += item.speed;
-                    if (item.y > canvas.height) {
-                        item.y = -20;
-                        item.x = Math.random() * (canvas.width - 30);
-                    }
-                    ctx.font = "24px Arial";
-                    ctx.fillText(item.symbol, item.x, item.y + 20);
+            // تطبيق الجاذبية
+            bunny.vy += bunny.gravity;
+            bunny.y += bunny.vy;
 
-                    if (
-                        bunny.x < item.x + 25 &&
-                        bunny.x + bunny.width > item.x &&
-                        bunny.y < item.y + 20 &&
-                        bunny.y + bunny.height > item.y
-                    ) {
-                        score += (item.type === 'heart' ? 3 : 1);
+            // اصطدام الأرنب بالأرضية السفلية للشاشة
+            if (bunny.y > canvas.height - bunny.height) {
+                bunny.y = canvas.height - bunny.height;
+                bunny.vy = 0;
+                bunny.isGrounded = true;
+            } else {
+                bunny.isGrounded = false;
+            }
+
+            // فحص الاصطدام مع المنصات (السحب) من أعلى
+            platforms.forEach(p => {
+                if (
+                    bunny.vy > 0 &&
+                    bunny.x + bunny.width > p.x &&
+                    bunny.x < p.x + p.w &&
+                    bunny.y + bunny.height >= p.y &&
+                    bunny.y + bunny.height <= p.y + 12
+                ) {
+                    bunny.y = p.y - bunny.height;
+                    bunny.vy = 0;
+                    bunny.isGrounded = true;
+                }
+            });
+
+            // رسم السحب (المنصات)
+            platforms.forEach(p => {
+                ctx.font = "20px Arial";
+                ctx.fillText("☁️", p.x + (p.w / 2) - 15, p.y + 10);
+            });
+
+            // رسم الجزرات
+            carrots.forEach(c => {
+                if (!c.collected) {
+                    ctx.font = "22px Arial";
+                    ctx.fillText("🥕", c.x, c.y);
+
+                    // التقاط الجزر
+                    let dist = Math.hypot((bunny.x + 20) - (c.x + 10), (bunny.y + 20) - (c.y - 10));
+                    if (dist < 30) {
+                        c.collected = true;
+                        score += 5;
                         scoreEl.textContent = score;
                         msgBox.textContent = comments[Math.floor(Math.random() * comments.length)];
-                        item.y = -20;
-                        item.x = Math.random() * (canvas.width - 30);
+                        
+                        // إعادة تدوير الجزرة لمكان جديد فوق
+                        setTimeout(() => {
+                            c.x = Math.random() * (canvas.width - 40);
+                            c.y = Math.random() * 100 + 20;
+                            c.collected = false;
+                        }, 1000);
                     }
-                });
+                }
+            });
 
-            } else if (currentMode === 2) {
-                items.forEach(cloud => {
-                    cloud.y += 1.5;
-                    if (cloud.y > canvas.height) {
-                        cloud.y = -20;
-                        cloud.x = Math.random() * (canvas.width - 60);
-                        score++;
-                        scoreEl.textContent = score;
-                    }
-                    ctx.font = "20px Arial";
-                    ctx.fillText(cloud.symbol, cloud.x, cloud.y + 15);
-                });
+            // رسم صورة الأرنب الحقيقية
+            ctx.drawImage(bunnyImg, bunny.x, bunny.y, bunny.width, bunny.height);
+        }
 
-            } else if (currentMode === 3) {
-                items.forEach((item) => {
-                    if (!item.collected) {
-                        ctx.font = "28px Arial";
-                        ctx.fillText(item.symbol, item.x, item.y + 25);
+        // تفاعلات أزرار التحكم بدقة عالية
+        const leftBtn = document.getElementById("leftBtn");
+        const rightBtn = document.getElementById("rightBtn");
+        const jumpBtn = document.getElementById("jumpBtn");
 
-                        if (
-                            bunny.x < item.x + 30 &&
-                            bunny.x + bunny.width > item.x &&
-                            bunny.y < item.y + 25 &&
-                            bunny.y + bunny.height > item.y
-                        ) {
-                            item.collected = true;
-                            score += 5;
-                            scoreEl.textContent = score;
-                            msgBox.textContent = `جمعنا حرف (${item.symbol}) يا أجمل نورا! 💕`;
-                        }
-                    }
-                });
+        function moveLeftStart(e) { e.preventDefault(); bunny.vx = -bunny.speed; }
+        function moveRightStart(e) { e.preventDefault(); bunny.vx = bunny.speed; }
+        function moveStop(e) { e.preventDefault(); bunny.vx = 0; }
+        
+        function jumpAction(e) {
+            e.preventDefault();
+            if (bunny.isGrounded) {
+                bunny.vy = bunny.jumpPower;
+                bunny.isGrounded = false;
             }
         }
 
-        const leftBtn = document.getElementById("leftBtn");
-        const rightBtn = document.getElementById("rightBtn");
+        leftBtn.addEventListener("mousedown", moveLeftStart);
+        leftBtn.addEventListener("mouseup", moveStop);
+        leftBtn.addEventListener("touchstart", moveLeftStart, { passive: false });
+        leftBtn.addEventListener("touchend", moveStop, { passive: false });
 
-        function moveLeft(e) {
-            e.preventDefault();
-            if (!isPlaying) return;
-            if (bunny.x > 0) bunny.x -= bunny.speed;
-        }
+        rightBtn.addEventListener("mousedown", moveRightStart);
+        rightBtn.addEventListener("mouseup", moveStop);
+        rightBtn.addEventListener("touchstart", moveRightStart, { passive: false });
+        rightBtn.addEventListener("touchend", moveStop, { passive: false });
 
-        function moveRight(e) {
-            e.preventDefault();
-            if (!isPlaying) return;
-            if (bunny.x < canvas.width - 45) bunny.x += bunny.speed;
-        }
-
-        leftBtn.addEventListener("click", moveLeft);
-        leftBtn.addEventListener("touchstart", moveLeft, { passive: false });
-        rightBtn.addEventListener("click", moveRight);
-        rightBtn.addEventListener("touchstart", moveRight, { passive: false });
+        jumpBtn.addEventListener("click", jumpAction);
+        jumpBtn.addEventListener("touchstart", jumpAction, { passive: false });
 
         function startGame() {
             if (isPlaying) return;
             isPlaying = true;
-            score = 0;
-            scoreEl.textContent = score;
+            resetGame();
             startBtn.textContent = "جاري اللعب... 🎮";
-            initGameData();
+            msgBox.textContent = "هبّي لفوق بالزر واجمعي الجزرات يا بطلة! 🥕";
             
             if (gameInterval) clearInterval(gameInterval);
             gameInterval = setInterval(updateGame, 25);
