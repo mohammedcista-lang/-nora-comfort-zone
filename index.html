@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مساحة الراحة والهدوء 🐰</title>
+    <title>مساحة الراحة والهدوء 🐰✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +13,7 @@
             font-family: 'Cairo', sans-serif;
         }
         body {
-            background-color: #f0f4f8; /* أزرق فاتح هادئ */
+            background-color: #f0f4f8;
             color: #1e293b;
             display: flex;
             flex-direction: column;
@@ -41,7 +41,7 @@
             background: #ffffff;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 25px rgba(59, 130, 246, 0.15);
             max-width: 400px;
             width: 100%;
             border-top: 5px solid #3b82f6;
@@ -55,6 +55,7 @@
             color: #64748b;
             font-size: 14px;
             margin-bottom: 20px;
+            line-height: 1.6;
         }
         .lock-input {
             width: 100%;
@@ -91,13 +92,26 @@
             max-width: 600px;
         }
         header h1 {
-            color: #3b82f6; /* أزرق */
+            color: #3b82f6;
             font-size: 24px;
             margin-bottom: 10px;
         }
         header p {
             color: #64748b;
         }
+
+        /* القلب المنور والإضاءة */
+        .glow-heart {
+            font-size: 35px;
+            animation: pulseGlow 1.5s infinite alternate;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px #ec4899);
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px #ec4899); }
+            100% { transform: scale(1.15); filter: drop-shadow(0 0 20px #ec4899); }
+        }
+
         .poem-card {
             background: #ffffff;
             border-radius: 15px;
@@ -110,19 +124,39 @@
             font-size: 16px;
             color: #334155;
             margin-bottom: 25px;
-            border-right: 5px solid #ec4899; /* خط زهري */
+            border-right: 5px solid #ec4899;
         }
+
         .game-container {
             background: #ffffff;
             border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.08);
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.12);
             max-width: 600px;
             width: 100%;
             text-align: center;
             position: relative;
             border: 1px solid #e2e8f0;
         }
+
+        /* صندوق العبارات فوق مكان اللعبة مباشرة */
+        .message-box {
+            background: #fdf2f8;
+            border: 2px solid #fbcfe8;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            color: #db2777;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.15);
+            transition: all 0.3s ease;
+        }
+
         .game-info {
             display: flex;
             justify-content: space-between;
@@ -131,61 +165,56 @@
             color: #3b82f6;
             font-size: 14px;
         }
+
         canvas {
             background: #f8fafc;
             border-radius: 10px;
             display: block;
             margin: 0 auto;
-            border: 2px dashed #cbd5e1;
-        }
-        .message-box {
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ec4899; /* زهري للعبارات */
-            min-height: 30px;
-            transition: all 0.3s ease;
+            border: 2px dashed #93c5fd;
+            box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.05);
         }
         
-        /* أزرار التحكم اليمين واليسار */
+        /* أزرار التحكم اليمين واليسار المتناسقة */
         .controls-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             margin-top: 15px;
         }
         .ctrl-btn {
-            background-color: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
-            width: 60px;
-            height: 45px;
-            font-size: 20px;
-            border-radius: 10px;
+            width: 70px;
+            height: 48px;
+            font-size: 22px;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
-            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+            transition: all 0.2s;
         }
         .ctrl-btn:active {
-            background-color: #2563eb;
-            transform: scale(0.95);
+            transform: scale(0.92);
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
         }
 
         .btn {
-            background-color: #ec4899; /* زر زهري */
+            background: linear-gradient(135deg, #ec4899, #db2777);
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 15px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             font-weight: bold;
-            transition: background 0.2s;
-            box-shadow: 0 3px 10px rgba(236, 72, 153, 0.3);
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35);
         }
         .btn:hover {
-            background-color: #db2777;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.45);
         }
         footer {
             margin-top: 30px;
@@ -197,13 +226,14 @@
 </head>
 <body>
 
-    <!-- شاشة إدخال كلمة السر -->
+    <!-- شاشة إدخال كلمة السر الخاصة -->
     <div id="lockScreen">
         <div class="lock-card">
+            <div class="glow-heart">💖</div>
             <h2>مساحة خاصة جداً 🐰🔒</h2>
-            <p>أدخلي كلمة السر المطلوبة (nora2008,1,26) لتفتح معك المساحة:</p>
-            <input type="text" id="passInput" class="lock-input" placeholder="اكتبي كلمة السر هنا">
-            <button class="btn" onclick="checkPassword()">دخول</button>
+            <p>هذه المساحة محمية بكلمة سر خاصة.. هل تعرفين المفتاح السري لتفتحي باب الهدوء؟</p>
+            <input type="text" id="passInput" class="lock-input" placeholder="اكتبي كلمة السر هنا..">
+            <button class="btn" onclick="checkPassword()">دخول المساحة</button>
             <div class="error-msg" id="errorMsg"></div>
         </div>
     </div>
@@ -211,11 +241,12 @@
     <!-- المحتوى الأساسي للموقع -->
     <div id="mainContent">
         <header>
+            <div class="glow-heart">💖</div>
             <h1>مساحة الراحة والهدوء 🐰✨</h1>
             <p>مساحة صغيرة خصصتها ليكِ عشان تفصلي بيها من تعب اليوم وضغوطات الغربة.</p>
         </header>
 
-        <!-- الشعر المختار (الخيار الأول) -->
+        <!-- الشعر المختار -->
         <div class="poem-card">
             ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
             تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
@@ -223,13 +254,17 @@
             معاكِ الحزن بيتبدّل.. ومعاكِ الوجع ممحوح
         </div>
 
-        <!-- قسم لعبة الأرانب والأزرار -->
+        <!-- قسم لعبة الأرانب -->
         <div class="game-container">
             <div class="game-info">
                 <span>لعبة أرنوب السعيد 🥕</span>
                 <span>الجزرات المجمعة: <span id="score">0</span></span>
             </div>
-            <canvas id="gameCanvas" width="350" height="220"></canvas>
+
+            <!-- مكان العبارات فوق اللعبة مباشرة مع الإضاءة -->
+            <div class="message-box" id="msgBox">اضغطي "ابدأ اللعبة" وخلي الابتسامة ترتسم! 😄</div>
+
+            <canvas id="gameCanvas" width="340" height="200"></canvas>
             
             <!-- أزرار التحكم اليمين واليسار -->
             <div class="controls-row">
@@ -237,8 +272,7 @@
                 <button class="ctrl-btn" onclick="moveBunny('right')">➡️</button>
             </div>
 
-            <div class="message-box" id="msgBox">اضغطي "ابدأ اللعبة" وخلي الابتسامة ترتسم! 😄</div>
-            <button class="btn" id="startBtn" onclick="startGame()">ابدأ اللعبة</button>
+            <button class="btn" id="startBtn" onclick="startGame()">ابدأ اللعبة 🥕</button>
         </div>
 
         <footer>
@@ -255,7 +289,7 @@
                 document.getElementById("lockScreen").style.display = "none";
                 document.getElementById("mainContent").style.display = "flex";
             } else {
-                errorMsg.textContent = "كلمة السر غير صحيحة، جربي تاني يا زولة! ❤️";
+                errorMsg.textContent = "كلمة السر غير صحيحة، فكري كويس يا زولة! ❤️";
             }
         }
 
@@ -269,8 +303,8 @@
         let gameInterval;
         let isPlaying = false;
 
-        let bunny = { x: 140, y: 160, width: 50, height: 50, speed: 25 };
-        let carrot = { x: Math.random() * 300, y: 0, width: 25, height: 25, speed: 2 };
+        let bunny = { x: 140, y: 140, width: 50, height: 50, speed: 28 };
+        let carrot = { x: Math.random() * 300, y: 0, width: 25, height: 25, speed: 2.5 };
 
         // العبارات المحددة فقط التي طلبها المستخدم
         const comments = [
@@ -311,6 +345,7 @@
                 score++;
                 scoreEl.textContent = score;
                 
+                // اختيار عبارة عشوائية من العبارات المحددة
                 let randomComment = comments[Math.floor(Math.random() * comments.length)];
                 msgBox.textContent = randomComment;
 
