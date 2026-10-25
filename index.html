@@ -174,7 +174,7 @@
             font-weight: 800;
         }
 
-        /* مشغل الموسيقى المتطور والحديث (Modern Music Player UI) */
+        /* مشغل الموسيقى المتطور والحديث */
         .player-card {
             background: linear-gradient(145deg, #ffffff, #f8fafc);
             border-radius: 20px;
@@ -198,7 +198,6 @@
             font-size: 12px;
             color: #64748b;
         }
-        /* شريط التقديم المخصص */
         .progress-container {
             background: #e2e8f0;
             height: 6px;
@@ -252,7 +251,6 @@
             transform: scale(0.95);
         }
 
-        /* قائمة الأغاني بتصميم فاخر */
         .playlist {
             display: flex;
             flex-direction: column;
@@ -367,22 +365,27 @@
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
 
+        /* قائمة الكتب بصيغة PDF */
         .book-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             margin-top: 10px;
             text-align: right;
         }
         .book-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            padding: 12px 14px;
+            padding: 12px 16px;
             border-radius: 12px;
             cursor: pointer;
             font-size: 13px;
             font-weight: 700;
             color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
             transition: all 0.2s;
         }
         .book-item:hover {
@@ -465,21 +468,28 @@
             <button class="btn" id="startBtn" onclick="startGame()">ابدأ المغامرة ✨</button>
         </div>
 
-        <!-- 2. ركن الكتب والقراءة -->
+        <!-- 2. ركن الكتب والقراءة (PDF حقيقية) -->
         <div id="bookSec" class="section-card" style="display: none;">
             <h3>📚 مكتبة نورا الهادئة (اقرئي وتأملي)</h3>
-            <div id="bookReaderBox" style="background: #f8fafc; padding: 15px; border-radius: 14px; margin-bottom: 12px; border: 1px solid #e2e8f0;">
-                <h4 id="currentBookTitle" style="color: #2563eb; margin-bottom: 6px; font-size: 14px;">اختارِ كتاباً من القائمة أدناه</h4>
-                <p id="currentBookContent" style="min-height: 60px; font-size: 13px; color: #475569; line-height: 1.7;">هنا سيظهر محتوى وفصول الكتاب المختار لتستمتعي بالقراءة في هدوء تام.</p>
-            </div>
+            <p style="font-size: 12px; color: #64748b; margin-bottom: 12px;">اضغطي على أي كتاب لفتح وقراءة النسخة الكاملة مباشرة 📖✨</p>
+            
             <div class="book-list">
-                <div class="book-item" onclick="openBook(0)">📖 كتاب: لأنك الله (رحلة للتعرف على الذات)</div>
-                <div class="book-item" onclick="openBook(1)">📖 كتاب: قواعد العشق الفلافي (خلاصات الحب والسكينة)</div>
-                <div class="book-item" onclick="openBook(2)">📖 كتاب: خربشات يومية وخواطر دافئة 🌿</div>
+                <a href="لأنك الله.pdf" target="_blank" class="book-item">
+                    <span>📖 كتاب: لأنك الله</span> <span>📥 تصفح وقراءة</span>
+                </a>
+                <a href="أحبك وكفى.pdf" target="_blank" class="book-item">
+                    <span>📖 كتاب: أحبك وكفى</span> <span>📥 تصفح وقراءة</span>
+                </a>
+                <a href="عزازيل.pdf" target="_blank" class="book-item">
+                    <span>📖 رواية: عزازيل</span> <span>📥 تصفح وقراءة</span>
+                </a>
+                <a href="رسائل من القران.pdf" target="_blank" class="book-item">
+                    <span>📖 كتاب: رسائل من القرآن</span> <span>📥 تصفح وقراءة</span>
+                </a>
             </div>
         </div>
 
-        <!-- 3. مشغل الموسيقى المتطور والحديث (Advanced Music Player) -->
+        <!-- 3. مشغل الموسيقى المتطور والحديث -->
         <div id="musicSec" class="section-card" style="display: none;">
             <h3 style="color: #db2777; margin-bottom: 15px;">🎵 مشغل أغاني الحب والروقان ♥️</h3>
             
@@ -489,12 +499,10 @@
                     <div class="track-artist" id="playerArtist">اختاري أغنية من القائمة أدناه 🎧</div>
                 </div>
 
-                <!-- شريط التقدم الزمني -->
                 <div class="progress-container" id="progressContainer" onclick="setProgress(event)">
                     <div class="progress-bar" id="progressBar"></div>
                 </div>
 
-                <!-- أزرار التحكم المتطورة -->
                 <div class="player-controls">
                     <button class="control-icon-btn" onclick="prevTrack()" title="السابق">⏮️</button>
                     <button class="control-icon-btn play-main-btn" id="playPauseBtn" onclick="togglePlay()" title="تشغيل / إيقاف">▶️</button>
@@ -502,10 +510,8 @@
                 </div>
             </div>
 
-            <!-- عنصر الصوت المخفي للمتصفح -->
             <audio id="audioPlayer" ontimeupdate="updateProgress()" onended="nextTrack()"></audio>
 
-            <!-- قائمة التشغيل -->
             <div class="playlist">
                 <div class="track-item" id="track-0" onclick="selectTrack(0)">
                     <span>🎶 تامر حسني - قادر أكمل</span> <span>▶️</span>
@@ -552,7 +558,6 @@
             }
         }
 
-        // التنقل بين الأقسام
         function showSection(secId) {
             document.getElementById('gameSec').style.display = (secId === 'gameSec') ? 'block' : 'none';
             document.getElementById('bookSec').style.display = (secId === 'bookSec') ? 'block' : 'none';
@@ -596,8 +601,7 @@
             audioPlayer.play();
             playPauseBtn.textContent = "⏸️";
 
-            // تحديث تصميم العناصر النشطة في القائمة
-            document.querySelectorAll('.track-item').forEach((item, idx) => {
+            document.querySelectorAll('.playlist .track-item').forEach((item, idx) => {
                 if (idx === currentTrackIndex) {
                     item.classList.add('active-track');
                 } else {
@@ -749,7 +753,6 @@
             ctx.drawImage(bunnyImg, bunny.x, bunny.y, bunny.width, bunny.height);
         }
 
-        // أزرار التحكم للأرنب
         const leftBtn = document.getElementById("leftBtn");
         const rightBtn = document.getElementById("rightBtn");
         const jumpBtn = document.getElementById("jumpBtn");
@@ -783,27 +786,6 @@
             msgBox.textContent = "اجمعي 10 جزرات لتنتقلي للمرحلة التانية! 🥕";
             if (gameInterval) clearInterval(gameInterval);
             gameInterval = setInterval(updateGame, 25);
-        }
-
-        // محتوى الكتب والقراءة
-        const booksData = [
-            {
-                title: "📖 كتاب: لأنك الله",
-                content: "«لأنك الله.. أستعين بك، وألجأ إليك حين تضيق بي الأسباب.» هذا الكتاب يأخذك في رحلة ممتعة لتعرف أسماء الله الحسنى وكيف نعيش بها في حياتنا اليومية لنشعر بالسكينة والطمأنينة المطلقة بعيداً عن صخب وقلق العالم."
-            },
-            {
-                title: "📖 كتاب: قواعد العشق الفلافي",
-                content: "«قاعدة: الإيمان هو حب الحياة بكل ما فيها، والرضا بالقدر واللحظة الراهنة.» قواعد العشق تعلمنا كيف ننظر للحب كقوة إيجابية تبني الروح وتمنح الأيام بهجة ودفئاً، بعيداً عن تعقيدات البشر."
-            },
-            {
-                title: "📖 كتاب: خربشات يومية وخواطر دافئة",
-                content: "«لا تحزني إن طالت مسافات الغربة، فالبذور تنبت في الصمت لتصبح أشجاراً تظلل من حولها.» خواطر قصيرة مصممة خصيصاً لترسم الابتسامة وتمنح الدعم المعنوي في كل صباح ومساء."
-            }
-        ];
-
-        function openBook(index) {
-            document.getElementById("currentBookTitle").textContent = booksData[index].title;
-            document.getElementById("currentBookContent").textContent = booksData[index].content;
         }
 
         // رسائل الدعم المفاجئة
