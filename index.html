@@ -360,7 +360,7 @@
             </div>
         </div>
 
-        <!-- 3. ركن مشغل الأغاني (قادر أكمل وأغاني حب عربية) -->
+        <!-- 3. ركن مشغل الأغاني (بالأسماء الجديدة للملفات) -->
         <div id="musicSec" class="section-card" style="display: none;">
             <h3 style="color: #db2777;">🎵 مشغل أغاني الحب والروقان ♥️</h3>
             <p id="nowPlaying" style="font-weight: bold; color: #db2777; margin-bottom: 10px;">جارٍ التشغيل: لم يتم اختيار أغنية بعد 🎧</p>
@@ -368,20 +368,20 @@
             <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 12px;"></audio>
 
             <div class="playlist">
-                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 'تامر حسني - قادر أكمل ♥️')">
+                <div class="track-item" onclick="playTrack('Tamerd.mp3', 'تامر حسني - قادر أكمل ♥️')">
                     <span>🎶 تامر حسني - قادر أكمل</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
                 </div>
-                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 'عمرو دياب - انت الحظ ✨')">
-                    <span>🎵 عمرو دياب - أنت الحظ</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
+                <div class="track-item" onclick="playTrack('Lmatkony.mp3', 'أغنية رومانسية هادئة ✨')">
+                    <span>🎵 أغنية لما تكوني</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
                 </div>
-                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', 'شيرين عبد الوهاب - مشاعر 🌸')">
-                    <span>💖 شيرين - مشاعر دافئة</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
+                <div class="track-item" onclick="playTrack('Sherine.mp3', 'شيرين عبد الوهاب - مشاعر دافئة 🌸')">
+                    <span>💖 شيرين - مشاعر</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
                 </div>
-                <div class="track-item" onclick="playTrack('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', 'محمد حماقي - ناويها 🌟')">
-                    <span>🌟 محمد حماقي - أحلى حاجة فيكي</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
+                <div class="track-item" onclick="playTrack('Ahmedsaad.mp3', 'أحمد سعد - إحساس مميز 🌟')">
+                    <span>🌟 أحمد سعد - أغنية حب</span> <span style="color:#db2777; font-weight:bold;">▶️ تشغيل</span>
                 </div>
             </div>
-            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">* ملاحظة: يمكنك استبدال روابط الأغاني بروابط ملفات الصوت الحقيقية (MP3) لأغنيتك المفضلة في الكود مباشرة! ✨</p>
+            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">* ملاحظة: تأكد من وجود هذه الملفات (`Tamerd.mp3`, `Lmatkony.mp3`, `Sherine.mp3`, `Ahmedsaad.mp3`) في نفس مجلد الموقع! ✨</p>
         </div>
 
         <!-- 4. رسائل الدعم المفاجئة -->
@@ -590,7 +590,7 @@
             document.getElementById("currentBookContent").textContent = booksData[index].content;
         }
 
-        // تشغيل الأغاني (قادر أكمل وأغاني الحب)
+        // تشغيل الأغاني بالملفات المضافة
         function playTrack(url, name) {
             const player = document.getElementById("audioPlayer");
             const nowPlaying = document.getElementById("nowPlaying");
