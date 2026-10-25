@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساحة الراحة والهدوء 🐰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background-color: #f7f5f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* شاشة قفل كلمة السر */
+        #lockScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f7f5f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            text-align: center;
+        }
+        .lock-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 400px;
+            width: 100%;
+        }
+        .lock-card h2 {
+            color: #d97706;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .lock-card p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .lock-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #e7e5e4;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .lock-input:focus {
+            border-color: #f59e0b;
+        }
+        .error-msg {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+
+        /* محتوى الموقع الأساسي (مخفي لحين إدخال كلمة السر) */
+        #mainContent {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        header h1 {
+            color: #d97706;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .poem-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            line-height: 2.2;
+            font-size: 16px;
+            color: #4b5563;
+            margin-bottom: 25px;
+            border-right: 5px solid #f59e0b;
+        }
+        .game-container {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        canvas {
+            background: #fafaf9;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            border: 2px dashed #e7e5e4;
+        }
+        .message-box {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #db2777;
+            min-height: 30px;
+            transition: all 0.3s ease;
+        }
+        .btn {
+            background-color: #f59e0b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background-color: #d97706;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #9ca3af;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شاشة إدخال كلمة السر -->
+    <div id="lockScreen">
+        <div class="lock-card">
+            <h2>مساحة خاصة جداً 🐰🔒</h2>
+            <p>أدخلي تاريخ ميلادك المميز (الشهر/اليوم) لتفتح معك المساحة الخاصة:</p>
+            <input type="text" id="passInput" class="lock-input" placeholder="مثال: 1/26">
+            <button class="btn" onclick="checkPassword()">دخول</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </div>
+    </div>
+
+    <!-- المحتوى الأساسي للموقع -->
+    <div id="mainContent">
+        <header>
+            <h1>مساحة الراحة والهدوء 🐰✨</h1>
+            <p>مساحة صغيرة خصصتها ليكِ عشان تفصلي بيها من تعب اليوم وضغوطات الغربة.</p>
+        </header>
+
+        <!-- الشعر المختار -->
+        <div class="poem-card">
+            ساعات الليل لو طالت.. ودقّ الشوق على الباب<br>
+            تلقي هنا واحة راحة.. بعيدة عن زحمة الأسباب<br>
+            سلامٌ في عيون الأرانب.. وسكينة تطمئن الروح<br>
+            معاكِ الحزن بيتبدّل.. ومعاكِ الوجع ممحوح
+        </div>
+
+        <!-- قسم لعبة الأرانب -->
+        <div class="game-container">
+            <div class="game-info">
+                <span>لعبة أرنوب السعيد 🥕</span>
+                <span>الجزرات المجمعة: <span id="score">0</span></span>
+            </div>
+            <canvas id="gameCanvas" width="350" height="250"></canvas>
+            <div class="message-box" id="msgBox">اضغطي "ابدأ اللعبة" وخلي الابتسامة ترتسم! 😄</div>
+            <button class="btn" id="startBtn" onclick="startGame()">ابدأ اللعبة</button>
+        </div>
+
+        <footer>
+            صُنع بكل حب وتقدير لعيون نورا ❤️
+        </footer>
+    </div>
+
+    <script>
+        // التحقق من كلمة السر (1/26)
+        function checkPassword() {
+            const val = document.getElementById("passInput").value.trim();
+            const errorMsg = document.getElementById("errorMsg");
+
+            if (val === "1/26") {
+                document.getElementById("lockScreen").style.display = "none";
+                document.getElementById("mainContent").style.display = "flex";
+            } else {
+                errorMsg.textContent = "كلمة السر غير صحيحة، جربي تاني يا زولة! ❤️";
+            }
+        }
+
+        // الكود البرمجي للعبة
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreEl = document.getElementById("score");
+        const msgBox = document.getElementById("msgBox");
+        const startBtn = document.getElementById("startBtn");
+
+        let score = 0;
+        let gameInterval;
+        let isPlaying = false;
+
+        let bunny = { x: 150, y: 190, width: 40, height: 40, speed: 20 };
+        let carrot = { x: Math.random() * 300, y: 0, width: 25, height: 25, speed: 2 };
+
+        const comments = [
+            "عان الخشيم عامل كيف! 😍",
+            "حلاتها الجضوم دي يا ناس! ❤️",
+            "بحبك يا نورا 💕",
+            "حلاتها البنوته دي 🌸",
+            "يا زولة خلينا نطير من الجمال ده! ✨",
+            "تبارك الله الزين كله هنا 🐰",
+            "وضحكتك إنتِ بالدنيا كلها 😊",
+            "يا حلاوة الضحكة والعزّة دي كلها! 🍯"
+        ];
+
+        function drawBunny() {
+            ctx.font = "30px Arial";
+            ctx.fillText("🐰", bunny.x, bunny.y + 30);
+        }
+
+        function drawCarrot() {
+            ctx.font = "24px Arial";
+            ctx.fillText("🥕", carrot.x, carrot.y + 20);
+        }
+
+        function updateGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            drawBunny();
+            drawCarrot();
+
+            carrot.y += carrot.speed;
+
+            if (carrot.y > canvas.height) {
+                resetCarrot();
+            }
+
+            if (
+                bunny.x < carrot.x + carrot.width &&
+                bunny.x + bunny.width > carrot.x &&
+                bunny.y < carrot.y + carrot.height &&
+                bunny.y + bunny.height > carrot.y
+            ) {
+                score++;
+                scoreEl.textContent = score;
+                
+                let randomComment = comments[Math.floor(Math.random() * comments.length)];
+                msgBox.textContent = randomComment;
+
+                resetCarrot();
+            }
+        }
+
+        function resetCarrot() {
+            carrot.y = 0;
+            carrot.x = Math.random() * (canvas.width - 40);
+        }
+
+        window.addEventListener("keydown", function(e) {
+            if (!isPlaying) return;
+            if (e.key === "ArrowRight" && bunny.x < canvas.width - 40) {
+                bunny.x += bunny.speed;
+            } else if (e.key === "ArrowLeft" && bunny.x > 0) {
+                bunny.x -= bunny.speed;
+            }
+        });
+
+        canvas.addEventListener("click", function(e) {
+            if (!isPlaying) return;
+            const rect = canvas.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            if (clickX < canvas.width / 2 && bunny.x > 0) {
+                bunny.x -= 30;
+            } else if (clickX >= canvas.width / 2 && bunny.x < canvas.width - 40) {
+                bunny.x += 30;
+            }
+        });
+
+        function startGame() {
+            if (isPlaying) return;
+            isPlaying = true;
+            score = 0;
+            scoreEl.textContent = score;
+            startBtn.textContent = "جاري اللعب...";
+            msgBox.textContent = "يالله.. جمعي الجزرات وخلينا نشوف الضحكة! 🥕";
+            
+            gameInterval = setInterval(updateGame, 30);
+        }
+    </script>
+</body>
+</html>
